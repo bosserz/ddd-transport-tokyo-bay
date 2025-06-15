@@ -37,3 +37,34 @@ This approach ensures responsiveness to temporal ridership fluctuations.
 
 4. Bus Specification: A custom electric autonomous bus was specified to meet sustainability and operational needs based on the results from previous steps.
 The entire process was carried out in Python using several packages, including Scikit-learn for KMeans clustering, Python-TSP for solving the Traveling Salesman Problem, and OSMnx and NetworkX for network analysis. The Jupyter Notebooks developed for this analysis are available in this GitHub repository: https://github.com/bosserz/ddd-transport-tokyo-bay.git.
+
+## Results
+### Stop Identification
+- A total of 25 stops were selected through K-means clustering of O-D points, supplemented with stops near key elderly-relevant POIs, ensuring connectivity for residents of all ages.
+- The selected stops effectively link major destinations, including Toyosu Station, Shinonome residential areas, and Ariake Station.
+
+### Route Optimization
+- The result from the Traveling Salesman Solver is shown in Figure 4 (left). The result shows some vacillation, then the refinement is done and the result is shown in the middle figure of Figure 4.
+- The final route forms an 11.5 km closed loop efficiently connecting all 25 stops within Toyosu, Shinonome, and Ariake.
+- This route enables comprehensive intra-area coverage while minimizing overall travel time.
+- The proposed 25 bus stops location according to the refined bus route are shown in Figure 4 (right).
+
+### Scheduling
+- Service frequencies were tailored to match observed passenger demand:
+    - 15-minute intervals during peak hours (e.g., 8:00 AM weekdays, with up to 1,525 passengers).
+    - 20–30 minutes during moderate demand periods (500–1,000 passengers).
+    - 60-minute intervals during off-peak times (<250 passengers).
+- The schedule ensures sufficient capacity, particularly accommodating elderly riders during peak demand periods while optimizing resources during lower-demand hours.
+
+In Figure 5, the passenger demand and bus frequency analysis reveals distinct temporal patterns between weekdays and weekends. On weekdays, demand surges rapidly from 6 AM and peaks around 8 AM with approximately 1,525 passengers, driven primarily by commuter traffic. To accommodate this peak, the system operates buses at 15-minute intervals. As demand stabilizes between 800–1,100 passengers from mid-morning to late afternoon, frequency is adjusted to 20–30 minutes, before tapering to 60-minute intervals during late evening when ridership drops below 250.
+
+In contrast, weekend demand peaks later and is more sustained through the day, reaching around 1,300 passengers at 11 AM and remaining elevated until late afternoon. Bus frequency follows suit, offering 15-minute intervals during peak hours and scaling back to 30–60 minutes as demand decreases. This demand-responsive scheduling approach ensures that bus availability aligns with passenger needs, optimizing both rider experience and operational efficiency.
+
+### Bus Specification
+- System operation during peak hours requires three electric buses, each with a 40-passenger capacity and able to complete the 40-minute loop efficiently.
+- Each bus is equipped with a 350 kWh battery, supporting a 230 km daily range with both overnight and mid-day charging.
+- A dedicated hub at Toyosu Station is equipped with three 150 kW fast chargers to support continuous, reliable operation.
+
+### Future Enhancements
+- To ensure long-term system resilience, further analysis is proposed, including flood risk integration into route planning.
+- Preliminary cost estimation suggests an implementation budget of approximately $3.4 million.

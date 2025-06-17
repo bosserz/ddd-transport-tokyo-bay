@@ -3,6 +3,12 @@ This is a section of the whole study of Data Driven Design for Future Transporta
 ## Introduction
 Japan's urban landscape is evolving rapidly, and the Tokyo Bay Area—particularly districts such as Toyosu, Shinonome, and Ariake in Koto Ward—illustrates both the challenges and opportunities of modern transit demands. While Japan's aging population (with nearly 30% of residents aged 65+ as of 2025[1]) underscores the need for accessible mobility solutions, urban residents of all ages require a transit system that is efficient, inclusive, and flexible.
 
+<div align="center">
+<img src="./docs/img/img1-population-age.png" alt="Population by Age Over time" width="500"/>
+
+*Figure 1: Population by Age Group (in Millions) and Percentage of Population Age 65 or Older*
+</div>
+
 Existing transit options, such as the Yurikamome line, provide valuable connectivity but often fall short in offering fine-grained, intra-area mobility that supports short trips—whether it be heading to hospitals, markets, or workplace clusters. In response, this project proposes a resilient, sustainable transportation system designed to serve the diverse needs of the community. By leveraging autonomous electric buses, the system aims to enhance accessibility, decrease car dependency, and build in the flexibility necessary to support elderly passengers without compromising service for younger residents.
 
 ## Objective
@@ -43,11 +49,23 @@ The entire process was carried out in Python using several packages, including S
 - A total of 25 stops were selected through K-means clustering of O-D points, supplemented with stops near key elderly-relevant POIs, ensuring connectivity for residents of all ages.
 - The selected stops effectively link major destinations, including Toyosu Station, Shinonome residential areas, and Ariake Station.
 
+<div align="center">
+<img src="./docs/img/img2-density-origin-destination.png" alt="Density of Origin-Destination from GPS Data" width="500"/>
+
+*Figure 2: Density of Origin-Destination from GPS Data (left), 25 Candidate Bus Stops from K-Mean Clustering (right)*
+</div>
+
 ### Route Optimization
-- The result from the Traveling Salesman Solver is shown in Figure 4 (left). The result shows some vacillation, then the refinement is done and the result is shown in the middle figure of Figure 4.
+- The result from the Traveling Salesman Solver is shown in Figure 3 (left). The result shows some vacillation, then the refinement is done and the result is shown in the middle figure of Figure 3.
 - The final route forms an 11.5 km closed loop efficiently connecting all 25 stops within Toyosu, Shinonome, and Ariake.
 - This route enables comprehensive intra-area coverage while minimizing overall travel time.
-- The proposed 25 bus stops location according to the refined bus route are shown in Figure 4 (right).
+- The proposed 25 bus stops location according to the refined bus route are shown in Figure 3 (right).
+
+<div align="center">
+<img src="./docs/img/img3-tsp-results.png" alt="Traveling Salemans Solution" width="500"/>
+
+*Figure 3: Bus Route from TSP algorithm (left), Refined Bus Route to remove vacillation (middle), Proposed Bus Stop based on the refined bus route (right)*
+</div>
 
 ### Scheduling
 - Service frequencies were tailored to match observed passenger demand:
@@ -56,7 +74,13 @@ The entire process was carried out in Python using several packages, including S
     - 60-minute intervals during off-peak times (<250 passengers).
 - The schedule ensures sufficient capacity, particularly accommodating elderly riders during peak demand periods while optimizing resources during lower-demand hours.
 
-In Figure 5, the passenger demand and bus frequency analysis reveals distinct temporal patterns between weekdays and weekends. On weekdays, demand surges rapidly from 6 AM and peaks around 8 AM with approximately 1,525 passengers, driven primarily by commuter traffic. To accommodate this peak, the system operates buses at 15-minute intervals. As demand stabilizes between 800–1,100 passengers from mid-morning to late afternoon, frequency is adjusted to 20–30 minutes, before tapering to 60-minute intervals during late evening when ridership drops below 250.
+<div align="center">
+<img src="./docs/img/img4-demand-scheduling.png" alt="Passenger Demand & Proposed Bus Frequency" width="500"/>
+
+*Figure 4: Passenger Demand & Proposed Bus Frequency*
+</div>
+
+In Figure 4, the passenger demand and bus frequency analysis reveals distinct temporal patterns between weekdays and weekends. On weekdays, demand surges rapidly from 6 AM and peaks around 8 AM with approximately 1,525 passengers, driven primarily by commuter traffic. To accommodate this peak, the system operates buses at 15-minute intervals. As demand stabilizes between 800–1,100 passengers from mid-morning to late afternoon, frequency is adjusted to 20–30 minutes, before tapering to 60-minute intervals during late evening when ridership drops below 250.
 
 In contrast, weekend demand peaks later and is more sustained through the day, reaching around 1,300 passengers at 11 AM and remaining elevated until late afternoon. Bus frequency follows suit, offering 15-minute intervals during peak hours and scaling back to 30–60 minutes as demand decreases. This demand-responsive scheduling approach ensures that bus availability aligns with passenger needs, optimizing both rider experience and operational efficiency.
 

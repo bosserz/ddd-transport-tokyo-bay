@@ -68,3 +68,8 @@ In contrast, weekend demand peaks later and is more sustained through the day, r
 ### Future Enhancements
 - To ensure long-term system resilience, further analysis is proposed, including flood risk integration into route planning.
 - Preliminary cost estimation suggests an implementation budget of approximately $3.4 million.
+
+## Conclusion
+This study demonstrates a data-driven approach to designing an autonomous electric bus system that enhances local mobility in Toyosu, Shinonome, and Ariake. By leveraging GPS mobility data, the study identified high-demand stop locations and optimized a 25-stop, 11.5 km loop route that addresses intra-area transportation needs. A demand-responsive timetable was developed to ensure service frequency aligns with passenger patterns across weekdays and weekends, balancing accessibility and operational efficiency.
+
+The system’s integration of sustainable electric buses, supported by a centralized charging hub at Toyosu Station, offers a practical and future-ready solution to reduce car dependency while remaining adaptable to the needs of an aging population.
